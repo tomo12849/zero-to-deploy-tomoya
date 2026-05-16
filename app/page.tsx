@@ -14,8 +14,10 @@ export default function Home() {
       <div className="w-full max-w-md p-4 space-y-6">
         <Card>
           <CardContent className="p-4 space-y-4">
-            <Button className="w-full h-12 text-lg">ご注文</Button>
-            <Button variant="secondary" className="w-full h-12 text-lg">
+            <Button className="w-full h-12 text-lg bg-yellow-200 hover:bg-yellow-300">
+              ご注文
+            </Button>
+            <Button className="w-full h-12 text-lg bg-yellow-200 hover:bg-yellow-300">
               テイクアウト注文
             </Button>
           </CardContent>
@@ -23,9 +25,15 @@ export default function Home() {
 
         <Card>
           <CardContent className="p-4 grid grid-cols-1 gap-4">
-            <Button className="w-full h-12 text-lg">注文履歴</Button>
-            <Button className="w-full h-12 text-lg">店員を呼ぶ</Button>
-            <Button className="w-full h-12 text-lg">お会計</Button>
+            <Button className="w-full h-12 text-lg bg-yellow-200 hover:bg-yellow-300">
+              注文履歴
+            </Button>
+            <Button className="w-full h-12 text-lg bg-yellow-200 hover:bg-yellow-300">
+              店員を呼ぶ
+            </Button>
+            <Button className="w-full h-12 text-lg bg-yellow-200 hover:bg-yellow-300">
+              お会計
+            </Button>
           </CardContent>
         </Card>
       </div>
@@ -37,5 +45,3 @@ export default function Home() {
     </main>
   )
 }
-
-
