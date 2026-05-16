@@ -79,7 +79,7 @@ const menuData = {
 }
 
 export default function Home() {
-  const [showMenu, setShowMenu] = useState(false)
+  const [currentPage, setCurrentPage] = useState("home")
   const [orderList, setOrderList] = useState<any[]>([])
 
   const addToOrder = (item: any) => {
@@ -93,24 +93,28 @@ export default function Home() {
         <h1 className="text-xl font-bold">
           テーブル1番 いらっしゃいませ！
         </h1>
+
         <p className="text-sm text-gray-600">
           カフェテリアへようこそ！
         </p>
       </header>
 
-      {/* Top Menu */}
-      {!showMenu && (
+      {/* ホーム */}
+      {currentPage === "home" && (
         <div className="w-full max-w-md p-4 space-y-6">
           <Card>
             <CardContent className="p-4 space-y-4">
               <Button
-                onClick={() => setShowMenu(true)}
+                onClick={() => setCurrentPage("menu")}
                 className="w-full h-12 text-lg bg-amber-300 hover:bg-amber-400 text-amber-900"
               >
                 ご注文
               </Button>
 
-              <Button className="w-full h-12 text-lg bg-amber-300 hover:bg-amber-400 text-amber-900">
+              <Button
+                onClick={() => setCurrentPage("takeout")}
+                className="w-full h-12 text-lg bg-amber-300 hover:bg-amber-400 text-amber-900"
+              >
                 テイクアウト注文
               </Button>
             </CardContent>
@@ -118,15 +122,24 @@ export default function Home() {
 
           <Card>
             <CardContent className="p-4 grid grid-cols-1 gap-4">
-              <Button className="w-full h-12 text-lg bg-amber-300 hover:bg-amber-400 text-amber-900">
+              <Button
+                onClick={() => setCurrentPage("history")}
+                className="w-full h-12 text-lg bg-amber-300 hover:bg-amber-400 text-amber-900"
+              >
                 注文履歴
               </Button>
 
-              <Button className="w-full h-12 text-lg bg-amber-300 hover:bg-amber-400 text-amber-900">
+              <Button
+                onClick={() => setCurrentPage("staff")}
+                className="w-full h-12 text-lg bg-amber-300 hover:bg-amber-400 text-amber-900"
+              >
                 店員を呼ぶ
               </Button>
 
-              <Button className="w-full h-12 text-lg bg-amber-300 hover:bg-amber-400 text-amber-900">
+              <Button
+                onClick={() => setCurrentPage("checkout")}
+                className="w-full h-12 text-lg bg-amber-300 hover:bg-amber-400 text-amber-900"
+              >
                 お会計
               </Button>
             </CardContent>
@@ -134,19 +147,24 @@ export default function Home() {
         </div>
       )}
 
-      {/* Menu List */}
-      {showMenu && (
+      {/* メニュー画面 */}
+      {(currentPage === "menu" ||
+        currentPage === "takeout") && (
         <div className="w-full max-w-5xl p-4 space-y-10">
-          {/* Back Button */}
           <Button
             variant="outline"
-            onClick={() => setShowMenu(false)}
+            onClick={() => setCurrentPage("home")}
             className="mb-2"
           >
             ← トップへ戻る
           </Button>
 
-          {/* Genre Sections */}
+          <h2 className="text-3xl font-bold text-center">
+            {currentPage === "menu"
+              ? "店内メニュー"
+              : "テイクアウトメニュー"}
+          </h2>
+
           {Object.entries(menuData).map(([genre, items]) => (
             <section key={genre} className="space-y-4">
               <h2 className="text-2xl font-bold text-amber-900">
@@ -189,7 +207,7 @@ export default function Home() {
             </section>
           ))}
 
-          {/* Order List */}
+          {/* 注文リスト */}
           <Card className="mt-10">
             <CardContent className="p-4 space-y-3">
               <h2 className="text-xl font-bold">
@@ -225,6 +243,110 @@ export default function Home() {
                   </div>
                 </div>
               )}
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* 注文履歴 */}
+      {currentPage === "history" && (
+        <div className="w-full max-w-md p-4">
+          <Card>
+            <CardContent className="p-6 space-y-4">
+              <h2 className="text-2xl font-bold">
+                注文履歴
+              </h2>
+
+              {orderList.length === 0 ? (
+                <p className="text-gray-500">
+                  注文履歴はまだありません
+                </p>
+              ) : (
+                orderList.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-between border-b pb-2"
+                  >
+                    <span>{item.name}</span>
+                    <span>¥{item.price}</span>
+                  </div>
+                ))
+              )}
+
+              <Button
+                onClick={() => setCurrentPage("home")}
+                className="w-full"
+              >
+                戻る
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* 店員呼び出し */}
+      {currentPage === "staff" && (
+        <div className="w-full max-w-md p-4">
+          <Card>
+            <CardContent className="p-6 space-y-4 text-center">
+              <h2 className="text-2xl font-bold">
+                店員を呼びました
+              </h2>
+
+              <p className="text-gray-600">
+                店員がまもなく伺います。
+              </p>
+
+              <Button
+                onClick={() => setCurrentPage("home")}
+                className="w-full"
+              >
+                戻る
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* お会計 */}
+      {currentPage === "checkout" && (
+        <div className="w-full max-w-md p-4">
+          <Card>
+            <CardContent className="p-6 space-y-4">
+              <h2 className="text-2xl font-bold">
+                お会計
+              </h2>
+
+              <div className="space-y-2">
+                {orderList.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-between border-b pb-2"
+                  >
+                    <span>{item.name}</span>
+                    <span>¥{item.price}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex justify-between font-bold text-xl pt-4">
+                <span>合計</span>
+
+                <span>
+                  ¥
+                  {orderList.reduce(
+                    (sum, item) => sum + item.price,
+                    0
+                  )}
+                </span>
+              </div>
+
+              <Button
+                onClick={() => setCurrentPage("home")}
+                className="w-full"
+              >
+                戻る
+              </Button>
             </CardContent>
           </Card>
         </div>
