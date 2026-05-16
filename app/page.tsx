@@ -5,54 +5,53 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
 const menuData = {
-  主菜: [
-    {
-      id: 1,
-      name: "ハンバーグプレート",
-      price: 980,
-      image:
-        "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      id: 2,
-      name: "チキンカレー",
-      price: 850,
-      image:
-        "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      id: 3,
-      name: "カルボナーラ",
-      price: 920,
-      image:
-        "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=1200&auto=format&fit=crop",
-    },
-  ],
+主菜: [
+  {
+    id: 1,
+    name: "ハンバーグプレート",
+    price: 980,
+    image:
+      "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    id: 2,
+    name: "チキンカレー",
+    price: 850,
+    image:
+      "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    id: 3,
+    name: "カルボナーラ",
+    price: 920,
+    image:
+      "https://images.unsplash.com/photo-1612874742237-6526221588e3?q=80&w=1200&auto=format&fit=crop",
+  },
+],
 
-  飲み物: [
-    {
-      id: 4,
-      name: "アイスコーヒー",
-      price: 420,
-      image:
-        "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      id: 5,
-      name: "カフェラテ",
-      price: 480,
-      image:
-        "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      id: 6,
-      name: "オレンジジュース",
-      price: 380,
-      image:
-        "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=1200&auto=format&fit=crop",
-    },
-  ],
-
+飲み物: [
+  {
+    id: 4,
+    name: "アイスコーヒー",
+    price: 420,
+    image:
+      "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    id: 5,
+    name: "カフェラテ",
+    price: 480,
+    image:
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    id: 6,
+    name: "オレンジジュース",
+    price: 380,
+    image:
+      "https://images.unsplash.com/photo-1600271886742-f049cd5bba3f?q=80&w=1200&auto=format&fit=crop",
+  },
+],
   デザート: [
     {
       id: 7,
