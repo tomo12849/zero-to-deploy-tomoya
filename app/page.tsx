@@ -5,53 +5,54 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
 const menuData = {
-主菜: [
-  {
-    id: 1,
-    name: "ハンバーグプレート",
-    price: 980,
-    image:
-      "https://cdn.pakutaso.com/shared/img/thumb/SAWA_hanbagu_TP_V.jpg",
-  },
-  {
-    id: 2,
-    name: "チキンカレー",
-    price: 850,
-    image:
-      "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    name: "カルボナーラ",
-    price: 920,
-    image:
-      "https://images.unsplash.com/photo-1612874742237-6526221588e3?q=80&w=1200&auto=format&fit=crop",
-  },
-],
+  主菜: [
+    {
+      id: 1,
+      name: "ハンバーグプレート",
+      price: 980,
+      image:
+        "https://cdn.pakutaso.com/shared/img/thumb/SAWA_hanbagu_TP_V.jpg",
+    },
+    {
+      id: 2,
+      name: "チキンカレー",
+      price: 850,
+      image:
+        "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      id: 3,
+      name: "カルボナーラ",
+      price: 920,
+      image:
+        "https://images.unsplash.com/photo-1612874742237-6526221588e3?q=80&w=1200&auto=format&fit=crop",
+    },
+  ],
 
-飲み物: [
-  {
-    id: 4,
-    name: "アイスコーヒー",
-    price: 420,
-    image:
-      "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 5,
-    name: "カフェラテ",
-    price: 480,
-    image:
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 6,
-    name: "オレンジジュース",
-    price: 380,
-    image:
-      "https://jaec-mikkabi.s3-ap-northeast-1.amazonaws.com/uploads/blog_article/thumbnail/123/webp_large_thumb_thumbnail.png.webp",
-  },
-],
+  飲み物: [
+    {
+      id: 4,
+      name: "アイスコーヒー",
+      price: 420,
+      image:
+        "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      id: 5,
+      name: "カフェラテ",
+      price: 480,
+      image:
+        "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      id: 6,
+      name: "オレンジジュース",
+      price: 380,
+      image:
+        "https://jaec-mikkabi.s3-ap-northeast-1.amazonaws.com/uploads/blog_article/thumbnail/123/webp_large_thumb_thumbnail.png.webp",
+    },
+  ],
+
   デザート: [
     {
       id: 7,
@@ -105,6 +106,13 @@ export default function Home() {
         </p>
       </header>
 
+      {/* 🔥 固定メッセージ（スマホ対応） */}
+      {message && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md bg-green-100 border border-green-300 text-green-800 px-4 py-3 rounded-xl text-center font-semibold shadow-lg">
+          {message}
+        </div>
+      )}
+
       {/* ホーム */}
       {currentPage === "home" && (
         <div className="w-full max-w-md p-4 space-y-6">
@@ -154,10 +162,8 @@ export default function Home() {
       )}
 
       {/* メニュー画面 */}
-      {(currentPage === "menu" ||
-        currentPage === "takeout") && (
+      {(currentPage === "menu" || currentPage === "takeout") && (
         <div className="w-full max-w-7xl p-4 flex flex-col lg:flex-row gap-6">
-          {/* 左側 メニュー */}
           <div className="flex-1 space-y-10">
             <Button
               variant="outline"
@@ -173,13 +179,6 @@ export default function Home() {
                 : "テイクアウトメニュー"}
             </h2>
 
-            {/* メッセージ */}
-            {message && (
-              <div className="bg-green-100 border border-green-300 text-green-800 px-4 py-3 rounded-xl text-center font-semibold shadow">
-                {message}
-              </div>
-            )}
-
             {Object.entries(menuData).map(([genre, items]) => (
               <section key={genre} className="space-y-4">
                 <h2 className="text-2xl font-bold text-amber-900">
@@ -187,7 +186,7 @@ export default function Home() {
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {items.map((item) => (
+                  {items.map((item: any) => (
                     <Card
                       key={item.id}
                       className="overflow-hidden shadow-md hover:shadow-xl transition"
@@ -199,15 +198,13 @@ export default function Home() {
                       />
 
                       <CardContent className="p-4 space-y-3">
-                        <div>
-                          <h3 className="text-lg font-semibold">
-                            {item.name}
-                          </h3>
+                        <h3 className="text-lg font-semibold">
+                          {item.name}
+                        </h3>
 
-                          <p className="text-amber-700 font-bold">
-                            ¥{item.price}
-                          </p>
-                        </div>
+                        <p className="text-amber-700 font-bold">
+                          ¥{item.price}
+                        </p>
 
                         <Button
                           onClick={() => addToOrder(item)}
@@ -223,7 +220,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* 右側 注文リスト */}
+          {/* 注文リスト */}
           <div className="w-full lg:w-[350px]">
             <Card className="sticky top-24 shadow-xl">
               <CardContent className="p-4 space-y-4">
@@ -237,10 +234,10 @@ export default function Home() {
                   </p>
                 ) : (
                   <>
-                    <div className="space-y-3 max-h-[500px] overflow-y-auto">
-                      {orderList.map((item, index) => (
+                    <div className="space-y-2 max-h-[400px] overflow-y-auto">
+                      {orderList.map((item, i) => (
                         <div
-                          key={index}
+                          key={i}
                           className="flex justify-between border-b pb-2"
                         >
                           <span>{item.name}</span>
@@ -251,7 +248,6 @@ export default function Home() {
 
                     <div className="flex justify-between font-bold text-xl pt-4 border-t">
                       <span>合計</span>
-
                       <span>
                         ¥
                         {orderList.reduce(
@@ -265,110 +261,6 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-        </div>
-      )}
-
-      {/* 注文履歴 */}
-      {currentPage === "history" && (
-        <div className="w-full max-w-md p-4">
-          <Card>
-            <CardContent className="p-6 space-y-4">
-              <h2 className="text-2xl font-bold">
-                注文履歴
-              </h2>
-
-              {orderList.length === 0 ? (
-                <p className="text-gray-500">
-                  注文履歴はまだありません
-                </p>
-              ) : (
-                orderList.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between border-b pb-2"
-                  >
-                    <span>{item.name}</span>
-                    <span>¥{item.price}</span>
-                  </div>
-                ))
-              )}
-
-              <Button
-                onClick={() => setCurrentPage("home")}
-                className="w-full"
-              >
-                戻る
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-
-      {/* 店員呼び出し */}
-      {currentPage === "staff" && (
-        <div className="w-full max-w-md p-4">
-          <Card>
-            <CardContent className="p-6 space-y-4 text-center">
-              <h2 className="text-2xl font-bold">
-                店員を呼びました
-              </h2>
-
-              <p className="text-gray-600">
-                店員がまもなく伺います。
-              </p>
-
-              <Button
-                onClick={() => setCurrentPage("home")}
-                className="w-full"
-              >
-                戻る
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-
-      {/* お会計 */}
-      {currentPage === "checkout" && (
-        <div className="w-full max-w-md p-4">
-          <Card>
-            <CardContent className="p-6 space-y-4">
-              <h2 className="text-2xl font-bold">
-                お会計
-              </h2>
-
-              <div className="space-y-2">
-                {orderList.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between border-b pb-2"
-                  >
-                    <span>{item.name}</span>
-                    <span>¥{item.price}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex justify-between font-bold text-xl pt-4">
-                <span>合計</span>
-
-                <span>
-                  ¥
-                  {orderList.reduce(
-                    (sum, item) => sum + item.price,
-                    0
-                  )}
-                </span>
-              </div>
-
-              <Button
-                onClick={() => setCurrentPage("home")}
-                className="w-full"
-              >
-                戻る
-              </Button>
-            </CardContent>
-          </Card>
         </div>
       )}
 
