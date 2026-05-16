@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center bg-gray-50">
+    <main className="min-h-screen flex flex-col items-center bg-amber-50">
       {/* Header */}
       <header className="w-full bg-white shadow p-4 text-center">
         <h1 className="text-xl font-bold">テーブル1番 いらっしゃいませ！</h1>
