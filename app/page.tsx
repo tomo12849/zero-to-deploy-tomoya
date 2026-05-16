@@ -11,7 +11,7 @@ const menuData = {
     name: "ハンバーグプレート",
     price: 980,
     image:
-      "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200&auto=format&fit=crop",
+      "https://cdn.pakutaso.com/shared/img/thumb/SAWA_hanbagu_TP_V.jpg",
   },
   {
     id: 2,
@@ -49,7 +49,7 @@ const menuData = {
     name: "オレンジジュース",
     price: 380,
     image:
-      "https://images.unsplash.com/photo-1600271886742-f049cd5bba3f?q=80&w=1200&auto=format&fit=crop",
+      "https://jaec-mikkabi.s3-ap-northeast-1.amazonaws.com/uploads/blog_article/thumbnail/123/webp_large_thumb_thumbnail.png.webp",
   },
 ],
   デザート: [
@@ -72,7 +72,7 @@ const menuData = {
       name: "バニラアイス",
       price: 350,
       image:
-        "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1200&auto=format&fit=crop",
+        "https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqG0LBjzJUpfPUffCSKSZN0qscsh4j1ABgT7rGC_LRO6k-XnxbcTeqgkLbvsrjjOCHzcW_S9-TryFnHrTvR3GhNWYXsq210caC1QD8_kwDuzMQFXnll8a50r2CBagWlyh5JA==/18303?errorImage=false",
     },
   ],
 }
